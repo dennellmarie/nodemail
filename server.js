@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const {logger} = require('./utilities/logger');
 // these are custom errors we've created
 const {FooError, BarError, BizzError} = require('./errors');
+const {alertMiddleware} = require('./alert');
 
 const app = express();
 
@@ -17,6 +18,7 @@ const russianRoulette = (req, res) => {
     Math.floor(Math.random() * errors.length)]('It blew up!');
 };
 
+const emailAlert = alertMiddleware([FooError, BarError]);
 
 app.use(morgan('common', {stream: logger.stream}));
 
@@ -26,6 +28,8 @@ app.get('*', russianRoulette);
 // YOUR MIDDLEWARE FUNCTION should be activated here using
 // `app.use()`. It needs to come BEFORE the `app.use` call
 // below, which sends a 500 and error message to the client
+
+app.use(emailAlert);
 
 app.use((err, req, res, next) => {
   logger.error(err);

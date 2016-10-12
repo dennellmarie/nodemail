@@ -30,3 +30,4 @@ function BizzError(message) {
 });
 
 module.exports = {FooError, BarError, BizzError};
+

@@ -25,5 +25,40 @@ const sendEmail = (emailData) => {
     .catch((e) => logger.error(`FAILURE: problem sending email. ${e.message}`));
 };
 
-
 module.exports = {sendEmail};
+
+// const data = {
+//     'FromEmail': 'veronica@email.com',
+//     'FromName': ;SERVICE ALERTS'',
+//     'Subject': 'ALERT: a FooError occurred',
+//     'Text-part': 'Something went wrong!!',
+//     'Recipients': [{'Email': 'roger@smith.com'}]
+// };
+
+
+
+//js file called alerts.js
+
+//what goes in that file
+//what modules to require
+//can you get the errors to display in that module
+
+//see if you can use the middleware - service.js -> app.use
+
+
+
+//require('./emailer')
+//alertMiddleware = (ErrorType)=> (req,res,next){
+  
+  //data object
+  
+//   if(Errortype).find(err) ===undefined{
+//     res.send(
+//       logger.info(`attempting to send message but got ${}`));
+      
+      
+//       sendmail(data)
+//   }
+  
+  
+// }
